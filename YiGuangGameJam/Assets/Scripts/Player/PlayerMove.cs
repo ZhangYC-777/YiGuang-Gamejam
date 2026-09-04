@@ -41,9 +41,9 @@ public class PlayerMove : MonoBehaviour
         moveController = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(moveSpeed * moveController, rb.velocity.y);
         if (moveController > 0)
-            transform.localScale = new Vector2(1, 1);
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         if (moveController < 0)
-            transform.localScale = new Vector2(-1, 1);
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         isRun = (moveController != 0);
     }
 
