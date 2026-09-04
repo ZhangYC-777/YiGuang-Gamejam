@@ -1,25 +1,25 @@
-# Unity project: keep this file beside Assets, Packages, and ProjectSettings.
+# Unity project is located in /YiGuangGameJam relative to this file.
 # Based on https://github.com/github/gitignore/blob/main/Unity.gitignore
 # Commit source assets and their .meta files.
 
 .utmp/
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Uu]ser[Ss]ettings/
+/YiGuangGameJam/[Ll]ibrary/
+/YiGuangGameJam/[Tt]emp/
+/YiGuangGameJam/[Oo]bj/
+/YiGuangGameJam/[Bb]uild/
+/YiGuangGameJam/[Bb]uilds/
+/YiGuangGameJam/[Ll]ogs/
+/YiGuangGameJam/[Uu]ser[Ss]ettings/
 *.log
 *.blend1
 *.blend1.meta
 
 # Memory captures and recordings
-/[Mm]emoryCaptures/
-/[Rr]ecordings/
+/YiGuangGameJam/[Mm]emoryCaptures/
+/YiGuangGameJam/[Rr]ecordings/
 
 # Generated Rider plugin and local IDE settings
-/[Aa]ssets/Plugins/Editor/JetBrains*
+/YiGuangGameJam/[Aa]ssets/Plugins/Editor/JetBrains*
 *.DotSettings.user
 .vs/
 .vscode/
@@ -63,21 +63,21 @@ crashlytics-build.properties
 InitTestScene*.unity*
 
 # Addressables generated content
-/ServerData
-/[Aa]ssets/StreamingAssets/aa*
-/[Aa]ssets/AddressableAssetsData/link.xml*
-/[Aa]ssets/Addressables_Temp*
-/[Aa]ssets/AddressableAssetsData/*/*.bin*
+/YiGuangGameJam/ServerData
+/YiGuangGameJam/[Aa]ssets/StreamingAssets/aa*
+/YiGuangGameJam/[Aa]ssets/AddressableAssetsData/link.xml*
+/YiGuangGameJam/[Aa]ssets/Addressables_Temp*
+/YiGuangGameJam/[Aa]ssets/AddressableAssetsData/*/*.bin*
 
 # Visual Scripting generated files
-/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db
-/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db.meta
-/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers
-/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers.meta
+/YiGuangGameJam/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db
+/YiGuangGameJam/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db.meta
+/YiGuangGameJam/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers
+/YiGuangGameJam/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers.meta
 
 # Generated test scenes and scene dependency cache
-/[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
-/[Aa]ssets/[Ss]ceneDependencyCache*
+/YiGuangGameJam/[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+/YiGuangGameJam/[Aa]ssets/[Ss]ceneDependencyCache*
 
 # OS metadata
 .DS_Store
