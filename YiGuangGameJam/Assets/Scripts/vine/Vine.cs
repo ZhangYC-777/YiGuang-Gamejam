@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Vine : MonoBehaviour
 {
@@ -9,8 +11,8 @@ public class Vine : MonoBehaviour
     [SerializeField] private float maxTurnAngle = 60; // 最大转向角
     [SerializeField] private float turnSpeed = 90 * Mathf.Deg2Rad; // 每秒可转过的最大弧度，即转向速度
     [SerializeField] private GameObject leafPrefab; // 叶子预制体
-    [SerializeField] private int nextLeafIndex = 20; // 间隔多少个藤蔓点生成叶子
-    //[SerializeField] private float leafToHeadDistance = 1f; // 生成的叶子距藤曼头的距离
+    [SerializeField] private int leafIndexInterval = 20; // 间隔多少个藤蔓点生成叶子
+    [SerializeField] private float leafOffset = 0.2f; //叶子偏移距离
 
     private Transform vineHead; // 藤曼头
     private Vector3 growDirection = Vector2.up; // 藤曼生长方向
@@ -20,6 +22,7 @@ public class Vine : MonoBehaviour
     private LineRenderer lineRenderer; // 用来连点成线的
     private Vector3 targetDirection; // 藤曼经过限制后的目标方向
     private int lastLeafIndex = 0; // 上一个生成叶子的藤蔓点索引
+    private bool leftleaf = true; // 叶子是否生成在左侧
 
  
     // Start is called before the first frame update
@@ -51,10 +54,10 @@ public class Vine : MonoBehaviour
             DrawLine();
         }
 
-        if ((lineRenderer.positionCount - lastLeafIndex) >= nextLeafIndex)
+        if ((pointList.Count - 1 - lastLeafIndex) >= leafIndexInterval)
         {
-            if (lastLeafIndex > 0) // 根部不长叶子
-                LeafGrow();
+            LeafGrow(leftleaf);
+            leftleaf = !leftleaf;
             lastLeafIndex = lineRenderer.positionCount - 1;
         }
     }
@@ -96,8 +99,34 @@ public class Vine : MonoBehaviour
     }
 
     // 叶子生长
-    private void LeafGrow()
+    private void LeafGrow(bool left)
     {
-        GameObject leaf = Instantiate(leafPrefab, pointList[lastLeafIndex], Quaternion.identity);
+        int index = pointList.Count - 1;
+        Vector3 vineDirection = (pointList[index] - pointList[index - 1]).normalized; // 叶子的生长方向
+        Vector3 leafPosition; // 叶子生长位置
+        float angle; // 叶子生长角度
+        if (left)
+        {
+            Vector3 leftDirection = Quaternion.Euler(0, 0, -90) * vineDirection;
+            leafPosition = pointList[index] + leftDirection * leafOffset;
+            angle = Mathf.Atan2(leftDirection.y, leftDirection.x) * Mathf.Rad2Deg;
+        }
+        else
+        {
+            Vector3 rightDirection = Quaternion.Euler(0, 0, 90) * vineDirection;
+            leafPosition = pointList[index] + rightDirection * leafOffset;
+            angle = Mathf.Atan2(rightDirection.y, rightDirection.x) * Mathf.Rad2Deg;
+        }
+        GameObject leaf = Instantiate(leafPrefab, leafPosition, Quaternion.Euler(0, 0, angle)); // 实例化对应朝向的叶子
+        Vector3 scale = leaf.transform.localScale;
+        if (left)
+        {
+            scale.y = Mathf.Abs(scale.y);
+        }
+        else
+        {
+            scale.y = -Mathf.Abs(scale.y); // 右边的叶子得上下翻转一下
+        }
+        leaf.transform.localScale = scale;
     }
 }

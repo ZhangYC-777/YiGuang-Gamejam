@@ -456,7 +456,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -790355531
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8a26d60fb45014bcd9bb392106f7c98b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -629,7 +629,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -790355531
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -1005,7 +1005,8 @@ MonoBehaviour:
   maxTurnAngle: 75
   turnSpeed: 1.5707964
   leafPrefab: {fileID: 3530775722265940361, guid: 54485b198b2718d4fb9204d3427ee174, type: 3}
-  nextLeafIndex: 20
+  leafIndexInterval: 20
+  leafOffset: -1.2
 --- !u!4 &478443354
 Transform:
   m_ObjectHideFlags: 0
@@ -1015,7 +1016,7 @@ Transform:
   m_GameObject: {fileID: 478443352}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.02, y: 1.16, z: 0}
+  m_LocalPosition: {x: -8.01, y: -0.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1061,8 +1062,8 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2002717741
-  m_SortingLayer: 2
+  m_SortingLayerID: -588316853
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -1240,7 +1241,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.563001, y: 0.9980001, z: -10.009534}
+  m_LocalPosition: {x: -7.553001, y: -0.62199986, z: -10.009534}
   m_LocalScale: {x: 1.1532, y: 1.1532, z: 1.1532}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1506,7 +1507,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -790355531
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -2286,7 +2287,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -653709415
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d5d6bd89f0ef49b4aad5b7337f0d246b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2750,7 +2751,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2002717741
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.44928586, g: 0.98742133, b: 0.34466583, a: 1}
@@ -2979,7 +2980,7 @@ Transform:
   m_GameObject: {fileID: 1720200656}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.563001, y: 0.9980001, z: -10.009534}
+  m_LocalPosition: {x: -7.553001, y: -0.62199986, z: -10.009534}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3046,6 +3047,10 @@ PrefabInstance:
     - target: {fileID: 1529206124008459835, guid: 25b22a85e2fda7c469c4bea9cfa6d1f8, type: 3}
       propertyPath: m_Name
       value: vine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1529206124008459835, guid: 25b22a85e2fda7c469c4bea9cfa6d1f8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5048848647140596076, guid: 25b22a85e2fda7c469c4bea9cfa6d1f8, type: 3}
       propertyPath: m_LocalScale.x
