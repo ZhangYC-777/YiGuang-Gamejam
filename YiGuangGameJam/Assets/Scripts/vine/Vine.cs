@@ -68,8 +68,8 @@ public class Vine : MonoBehaviour
 
     // 通过鼠标更新藤曼生长方向
     private void UpdateGrowDirection()
-    {   // 按下鼠标左键再计算目标方向
-        if (Input.GetMouseButtonDown(0))
+    {   // 按下或按住鼠标左键时计算目标方向
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
         {
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // 获取鼠标世界坐标
             mouseWorldPos.z = vineHead.position.z; // 锁定鼠标世界坐标的z轴

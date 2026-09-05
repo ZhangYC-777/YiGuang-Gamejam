@@ -953,7 +953,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growSpeed: 3
   pointDistance: 0.1
-  maxTurnAngle: 60
+  maxTurnAngle: 75
+  turnSpeed: 1.5707964
 --- !u!4 &478443354
 Transform:
   m_ObjectHideFlags: 0
@@ -1188,7 +1189,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.520001, y: 1.4900001, z: -10.009534}
+  m_LocalPosition: {x: -7.563001, y: 0.9980001, z: -10.009534}
   m_LocalScale: {x: 1.1532, y: 1.1532, z: 1.1532}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2650,7 +2651,7 @@ Transform:
   m_GameObject: {fileID: 1637628208}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.33, z: -0.009533882}
+  m_LocalPosition: {x: 0.457, y: -0.162, z: -0.009533882}
   m_LocalScale: {x: 0, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2848,7 +2849,7 @@ Transform:
   m_GameObject: {fileID: 1720200656}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.520001, y: 1.4900001, z: -10.009534}
+  m_LocalPosition: {x: -7.563001, y: 0.9980001, z: -10.009534}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
