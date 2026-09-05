@@ -51,7 +51,7 @@ MonoBehaviour:
   maxTurnAngle: 45
   turnSpeed: 1.5707964
   leafPrefab: {fileID: 3530775722265940361, guid: 54485b198b2718d4fb9204d3427ee174, type: 3}
-  leafIndexInterval: 20
+  leafIndexInterval: 15
   leafOffset: -1.2
 --- !u!120 &8445332013098665809
 LineRenderer:
