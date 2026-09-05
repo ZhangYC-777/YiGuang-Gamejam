@@ -952,10 +952,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growSpeed: 3
-  growDirection: {x: 0, y: 1, z: 0}
   pointDistance: 0.1
-  pointList: []
-  mouseWorldPos: {x: 0, y: 0, z: 0}
+  maxTurnAngle: 60
 --- !u!4 &478443354
 Transform:
   m_ObjectHideFlags: 0
@@ -1019,7 +1017,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.2
+    widthMultiplier: 1
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -1032,6 +1030,33 @@ LineRenderer:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.45199072
+        value: 0.83420694
+        inSlope: -0.9679351
+        outSlope: -0.9679351
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7234917
+        value: 0.47420108
+        inSlope: -2.0214324
+        outSlope: -2.0214324
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.24339294
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
