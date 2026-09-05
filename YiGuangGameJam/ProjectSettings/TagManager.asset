@@ -72,6 +72,3 @@ TagManager:
   - name: Minimap
     uniqueID: 1491282665
     locked: 0
-  - name: VineLine
-    uniqueID: 3357313961
-    locked: 0

@@ -8,6 +8,9 @@ public class Vine : MonoBehaviour
     [SerializeField] private float pointDistance = 0.1f; // 记录的两个藤曼点之间的距离
     [SerializeField] private float maxTurnAngle = 60; // 最大转向角
     [SerializeField] private float turnSpeed = 90 * Mathf.Deg2Rad; // 每秒可转过的最大弧度，即转向速度
+    [SerializeField] private GameObject leafPrefab; // 叶子预制体
+    [SerializeField] private int nextLeafIndex = 20; // 间隔多少个藤蔓点生成叶子
+    //[SerializeField] private float leafToHeadDistance = 1f; // 生成的叶子距藤曼头的距离
 
     private Transform vineHead; // 藤曼头
     private Vector3 growDirection = Vector2.up; // 藤曼生长方向
@@ -16,6 +19,7 @@ public class Vine : MonoBehaviour
     private Vector3 lastPoint; // 记录的上一个藤蔓点的位置
     private LineRenderer lineRenderer; // 用来连点成线的
     private Vector3 targetDirection; // 藤曼经过限制后的目标方向
+    private int lastLeafIndex = 0; // 上一个生成叶子的藤蔓点索引
 
  
     // Start is called before the first frame update
@@ -45,6 +49,13 @@ public class Vine : MonoBehaviour
         if (Vector3.Distance(vineHead.position, lastPoint) > pointDistance)
         {
             DrawLine();
+        }
+
+        if ((lineRenderer.positionCount - lastLeafIndex) >= nextLeafIndex)
+        {
+            if (lastLeafIndex > 0) // 根部不长叶子
+                LeafGrow();
+            lastLeafIndex = lineRenderer.positionCount - 1;
         }
     }
     // 藤曼头移动
@@ -82,5 +93,11 @@ public class Vine : MonoBehaviour
         }
 
         growDirection = Vector3.RotateTowards(growDirection, targetDirection, turnSpeed * Time.deltaTime, 0); // 藤曼生长方向逐渐靠向目标方向，每帧计算
+    }
+
+    // 叶子生长
+    private void LeafGrow()
+    {
+        GameObject leaf = Instantiate(leafPrefab, pointList[lastLeafIndex], Quaternion.identity);
     }
 }
