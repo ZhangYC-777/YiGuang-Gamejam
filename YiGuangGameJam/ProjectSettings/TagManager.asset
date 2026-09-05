@@ -14,6 +14,8 @@ TagManager:
   - roomTilemap
   - miniMapPlayer
   - playerWeapon
+  - Vine
+  - Enemy
   layers:
   - Default
   - TransparentFX
