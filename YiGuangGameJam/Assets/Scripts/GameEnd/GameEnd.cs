@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class GameEnd : MonoBehaviour
 {
@@ -45,9 +43,6 @@ public class GameEnd : MonoBehaviour
     public void ShowGameEndPanel()
     {
         gameEndPanel.SetActive(true);
-        //通关了：确保能点按钮，并显示“下一关”按钮
-        EnsureEventSystem();
-        AddNextLevelButton();
     }
      public void EndGame()
     {
@@ -63,116 +58,5 @@ public class GameEnd : MonoBehaviour
         ShowGameEndPanel();
         //暂停游戏
         Time.timeScale = 0f;    
-    }
-
-    //是否还有下一关（关卡按 Build Settings 里的顺序排）
-    private bool HasNextLevel()
-    {
-        int index = SceneManager.GetActiveScene().buildIndex;
-        return index >= 0 && index + 1 < SceneManager.sceneCountInBuildSettings;
-    }
-
-    //进入下一关
-    private void NextLevel()
-    {
-        //恢复游戏时间
-        Time.timeScale = 1f;
-        int next = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(next);
-    }
-
-    //回到主菜单（Build Settings 里的第 0 个场景 = MainMenu）
-    private void GoToMainMenu()
-    {
-        //恢复游戏时间
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
-    }
-
-    //按钮点击需要 EventSystem；关卡场景里没有，现场补一个
-    private void EnsureEventSystem()
-    {
-        if (EventSystem.current != null)
-            return;
-
-        GameObject go = new GameObject("EventSystem");
-        go.AddComponent<EventSystem>();
-        go.AddComponent<StandaloneInputModule>();
-    }
-
-    //在通关面板上创建一个按钮：还有下一关就显示“下一关”，最后一关显示“回到主菜单”
-    private void AddNextLevelButton()
-    {
-        bool hasNext = HasNextLevel();
-        string label = hasNext ? "下一关" : "回到主菜单";
-
-        //防止重复创建
-        if (gameEndPanel.transform.Find("LevelEndButton") != null)
-            return;
-
-        Canvas canvas = gameEndPanel.GetComponentInParent<Canvas>();
-        if (canvas == null)
-            return; //没有画布就没法放UI按钮
-
-        //关键：Canvas 上必须要有 GraphicRaycaster，EventSystem 才能点到 UI；
-        //你们的场景 Canvas 上只有 CanvasScaler、缺 GraphicRaycaster，这里自动补上。
-        if (canvas.GetComponent<GraphicRaycaster>() == null)
-            canvas.gameObject.AddComponent<GraphicRaycaster>();
-
-        Font font = FindUIFont();
-
-        //按钮本体
-        GameObject btnGO = new GameObject("LevelEndButton", typeof(RectTransform), typeof(Image), typeof(Button));
-        btnGO.transform.SetParent(gameEndPanel.transform, false);
-        btnGO.transform.SetAsLastSibling(); //放到最上层，别被面板背景挡住
-        RectTransform rt = btnGO.GetComponent<RectTransform>();
-        rt.anchorMin = new Vector2(0.5f, 0.22f);
-        rt.anchorMax = new Vector2(0.5f, 0.22f);
-        rt.pivot = new Vector2(0.5f, 0.5f);
-        rt.sizeDelta = new Vector2(280f, 64f);
-
-        Image img = btnGO.GetComponent<Image>();
-        img.color = new Color(0.22f, 0.60f, 0.30f, 1f); //绿色按钮
-
-        Button button = btnGO.GetComponent<Button>();
-        if (hasNext)
-            button.onClick.AddListener(NextLevel);
-        else
-            button.onClick.AddListener(GoToMainMenu);
-
-        //按钮文字
-        GameObject txtGO = new GameObject("Text", typeof(RectTransform), typeof(Text));
-        txtGO.transform.SetParent(btnGO.transform, false);
-        RectTransform trt = txtGO.GetComponent<RectTransform>();
-        trt.anchorMin = Vector2.zero;
-        trt.anchorMax = Vector2.one;
-        trt.offsetMin = Vector2.zero;
-        trt.offsetMax = Vector2.zero;
-
-        Text text = txtGO.GetComponent<Text>();
-        text.text = label;
-        text.fontSize = 34;
-        text.alignment = TextAnchor.MiddleCenter;
-        text.color = Color.white;
-        if (font != null)
-        {
-            text.font = font;
-        }
-        else
-        {
-            text.font = Font.CreateDynamicFontFromOSFont("Arial", 34); //兜底字体
-        }
-    }
-
-    //从场景里现有的UI文字复制字体，保证中文能正常显示
-    private Font FindUIFont()
-    {
-        Text[] all = Resources.FindObjectsOfTypeAll<Text>();
-        for (int i = 0; i < all.Length; i++)
-        {
-            if (all[i].font != null && all[i].gameObject.scene.IsValid())
-                return all[i].font;
-        }
-        return null;
     }
 }
