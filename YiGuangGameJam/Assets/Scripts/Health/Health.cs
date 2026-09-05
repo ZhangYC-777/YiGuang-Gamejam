@@ -22,6 +22,9 @@ public class Health : MonoBehaviour,IDamageable
     private float invincibilityTimer;
     //声明受伤是否无敌
     private bool isDamageImmune;
+    //只读属性，供UI等外部读取
+    public int MaxHealth => maxHealth;
+    public int CurrentHealth => currentHealth;
 
 
    

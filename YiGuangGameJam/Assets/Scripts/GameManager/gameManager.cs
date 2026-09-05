@@ -22,6 +22,10 @@ public class gameManager : MonoBehaviour
     public GameObject enemyManager;
     //声明虚拟摄像机，在Inspector中拖入PlayerCamera
     public CinemachineVirtualCamera mainCamera;
+    // 生长失败也复用现有死亡面板和 R 键重试。
+    public PlayerDie playerDie;
+    private bool isFailed;
+    public bool IsGrowing => currentState == GameState.Growing;
     void Start()
     {
         //获取玩家对象
@@ -39,7 +43,21 @@ public class gameManager : MonoBehaviour
     //声明一个公共方法，供藤蔓生长结束时调用
     public void GrowthFinished()
     {
+        if (isFailed)
+            return;
         ChangeState(GameState.PlayerMoving);
+    }
+
+    public void GrowthFailed()
+    {
+        if (!IsGrowing || isFailed)
+            return;
+
+        isFailed = true;
+        vine.GetComponent<Vine>().enabled = false;
+        if (vineGrow != null)
+            vineGrow.enabled = false;
+        playerDie.Die();
     }
 
     //声明一个方法去改变状态
