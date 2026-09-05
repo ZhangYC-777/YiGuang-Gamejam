@@ -81,6 +81,14 @@ public class GameEnd : MonoBehaviour
         SceneManager.LoadScene(next);
     }
 
+    //回到主菜单（Build Settings 里的第 0 个场景 = MainMenu）
+    private void GoToMainMenu()
+    {
+        //恢复游戏时间
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
+    }
+
     //按钮点击需要 EventSystem；关卡场景里没有，现场补一个
     private void EnsureEventSystem()
     {
@@ -92,14 +100,14 @@ public class GameEnd : MonoBehaviour
         go.AddComponent<StandaloneInputModule>();
     }
 
-    //在通关面板上创建一个“下一关”按钮（最后一关没有下一关就不创建）
+    //在通关面板上创建一个按钮：还有下一关就显示“下一关”，最后一关显示“回到主菜单”
     private void AddNextLevelButton()
     {
-        if (!HasNextLevel())
-            return;
+        bool hasNext = HasNextLevel();
+        string label = hasNext ? "下一关" : "回到主菜单";
 
         //防止重复创建
-        if (gameEndPanel.transform.Find("NextLevelButton") != null)
+        if (gameEndPanel.transform.Find("LevelEndButton") != null)
             return;
 
         Canvas canvas = gameEndPanel.GetComponentInParent<Canvas>();
@@ -114,7 +122,7 @@ public class GameEnd : MonoBehaviour
         Font font = FindUIFont();
 
         //按钮本体
-        GameObject btnGO = new GameObject("NextLevelButton", typeof(RectTransform), typeof(Image), typeof(Button));
+        GameObject btnGO = new GameObject("LevelEndButton", typeof(RectTransform), typeof(Image), typeof(Button));
         btnGO.transform.SetParent(gameEndPanel.transform, false);
         btnGO.transform.SetAsLastSibling(); //放到最上层，别被面板背景挡住
         RectTransform rt = btnGO.GetComponent<RectTransform>();
@@ -127,7 +135,10 @@ public class GameEnd : MonoBehaviour
         img.color = new Color(0.22f, 0.60f, 0.30f, 1f); //绿色按钮
 
         Button button = btnGO.GetComponent<Button>();
-        button.onClick.AddListener(NextLevel);
+        if (hasNext)
+            button.onClick.AddListener(NextLevel);
+        else
+            button.onClick.AddListener(GoToMainMenu);
 
         //按钮文字
         GameObject txtGO = new GameObject("Text", typeof(RectTransform), typeof(Text));
@@ -139,7 +150,7 @@ public class GameEnd : MonoBehaviour
         trt.offsetMax = Vector2.zero;
 
         Text text = txtGO.GetComponent<Text>();
-        text.text = "下一关";
+        text.text = label;
         text.fontSize = 34;
         text.alignment = TextAnchor.MiddleCenter;
         text.color = Color.white;
