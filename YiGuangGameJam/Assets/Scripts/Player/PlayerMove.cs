@@ -21,6 +21,8 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        // 连续碰撞检测：高速下落/上跳时不会一步穿过叶子等薄平台
+        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
 
     // Update is called once per frame
