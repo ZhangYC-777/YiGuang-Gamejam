@@ -1,0 +1,69 @@
+========================================
+ 授权与素材版权说明 / LICENSE & ASSET CREDITS
+ 游戏名称：Caterpillar is Coming（中文名：虫来）
+ 队伍：Pig vs Vegetable（Global Game Jam 作品）
+========================================
+
+一、作品与团队授权声明
+------------------------------------------------
+本作品《Caterpillar is Coming》由以下三位成员共同创作并同意提交：
+
+- 膨胀面包边 —— 策划 / 美术
+- 张一测 —— 程序
+- LyzMing —— 程序
+
+上述成员确认：本作品为三人共同完成，同意以团队名义参加本次
+Game Jam 并授权赛事方按比赛规则对作品进行展示、试玩与宣传。
+
+二、本团队原创内容的授权
+------------------------------------------------
+- 游戏代码（Assets/Scripts 及工程内由本团队编写的脚本）：
+  以 MIT 许可证发布，版权归团队所有（见文件末尾 MIT 条款）。
+  可自由使用、修改与再分发，需保留版权声明。
+- 由本团队原创的美术、关卡设计与文档：
+  版权归团队所有，仅限本作品相关用途。
+
+三、第三方素材与致谢（务必保留本声明）
+------------------------------------------------
+1. 背景音乐：
+   曲目来源：IndieDevs — "10 Track Modern Chiptune Demo"
+   来源网址：https://opengameart.org/content/10-track-modern-chiptune-demo
+   许可说明：以 OpenGameArt 页面所标注的许可为准（通常为 CC0 /
+   CC-BY 类；若要求署名，本文件即为署名记录）。
+2. 美术素材：
+   - 部分美术素材来自免费素材包：SunnyLand Artwork
+     （免费素材包，作者按该包自带许可使用）。
+   - 部分美术素材使用豆包（Doubao）AI 生成，
+     已在本作范围内使用。
+
+3. 代码辅助：游戏代码使用 AI 工具进行优化与调试，
+   最终实现与 bug 修复由团队成员确认。
+
+四、使用范围
+------------------------------------------------
+本授权文件随作品一起分发，任何第三方素材的再分发需遵守其各自
+原始许可。本文件仅覆盖上述声明内容，不替代第三方素材的原始许可。
+
+========================================
+ MIT License
+------------------------------------------------
+Copyright (c) 2026 Pig vs Vegetable
+（膨胀面包边 / 张一测 / LyzMing）
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
